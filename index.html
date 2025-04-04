@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мій PWA</title>
+    <!-- Підключення файлу маніфесту -->
+    <link rel="manifest" href="manifest.json" />
+    <!-- Можна задати тему кольорів -->
+    <meta name="theme-color" content="#121212" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>Ласкаво просимо до мого PWA!</h1>
+    <!-- Тут може бути ваш інтерфейс: головне меню, кнопки і т.д. -->
+    <div id="app">
+      <!-- Приклад: кнопки для вибору аркуша -->
+      <a href="?id=Токарка" class="button">Завдання Ток-Фр</a>
+      <a href="?id=Сварка" class="button">Завдання Св-Сл</a>
+    </div>
+    
+    <!-- Реєстрація сервісного працівника -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function (registration) {
+              console.log('Service Worker зареєстровано з успіхом: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.error('Помилка при реєстрації Service Worker: ', err);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
